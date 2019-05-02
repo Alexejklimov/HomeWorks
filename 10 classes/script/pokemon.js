@@ -3,7 +3,6 @@
 //  і переміщається випадковим чином у нову позицію. 
 // База  у відповідь стріляє у якусь позицію і наносить шкоду кожному із покемонів, які знаходяться у заданій позиції.
 
-//все плохо
 class Pokemon {
     constructor(name, health, ammo) {
         this.name = name
@@ -35,7 +34,7 @@ class Pokemon {
         return min + Math.floor(Math.random() * (max - min + 1))
     }
     shoot() {
-        if (this.ammo > 0) castleHealth -= 1
+        if (this.ammo > 0) castleHealth -= 1 //убрать переменную
         this.randomPosition(0, 30)
         this.ammo -= 1
     }

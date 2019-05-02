@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //     . Розробити клас «Список контактів»
+        // поля
+        // •	Список контактів адресатів (Фото адресата, Ім’я адресата, e-mail адресата)
+        // •	Список контактів для відображення
+        // •	Метод знаходження контактів, імена яких які починаються із вказаного текстового фрагмента
+        // •	Метод генерування розмітки
+
+        class ContactId {
+            constructor(imgId, nameId, mailId) {
+                this.imgId = imgId
+                this.nameId = nameId
+                this.mailId = mailId
+            }
+            render(contId) {
+                let container = document.getElementById(contId)
+                let field = document.createElement("p")
+
+                this.img = document.createElement('img')
+                this.img.src = this.imgId
+                this.img.style.width = "35px"
+                this.img.style.align = "middle"
+                field.appendChild(this.img)
+
+                this.spanName = document.createElement('span')
+                this.spanName.innerText = this.nameId
+                field.appendChild(this.nameId)
+
+                this.spanMail = document.createElement("span")
+                this.spanMail.innerText = this.mailId
+                field.appendChild(this.mailId)
+
+                container.appendChild(field)
+            }
+            toString() {
+                document.write(`<img src="${this.imgId}" alt="" width="35px" align="middle"> ${this.nameId} - ${this.mailId}   <br>`)
+            }
+        }
+        class PhoneBook {
+            constructor(accArr, countId) {
+                this.accArr = accArr
+                this.countId = countId
+            }
+            findAcc() { //шото не то
+                let inptText = this.inp.value
+                let inp = inptText.split('')
+                let countId = this.countId
+
+                for (let x = 0; x < this.accArr.length; x++) {
+                    let accName = this.accArr[x].nameId.split('')
+                    let counter = 0
+                    for (let i = 0; i < inp.length; i++) {
+                        if (inp[i] == accName[i]) counter++
+                    }
+                    if (counter == inp.length + 1) return this.accArr[x].toString()
+                }
+            }
+            ShowAll() {
+                for (let i = 0; i < this.accArr.length; i++) {
+                    this.accArr[i].toString()
+
+                }
+
+            }
+
+            render(contId) {
+                let container = document.getElementById(contId)
+                let label = document.createElement('label')
+                label.innerText = "input"
+                this.inp = document.createElement('input')
+                this.inp.placeholder = "input name"
+                label.appendChild(this.inp)
+
+                const btn = document.createElement('button')
+                btn.innerText = "Find"
+                btn.onclick = this.findAcc.bind(this)
+
+
+                container.appendChild(label)
+                container.appendChild(btn)
+            }
+
+
+
+        }
+
+        window.onload = function () {
+            let a1 = new ContactId("../img/sadface.png", "valera", "Val@U.UA")
+            let a2 = new ContactId("../img/sadface.png", "valeria", "Lera@U.UA")
+            let a3 = new ContactId("../img/sadface.png", "semen", "sema@U.UA")
+            let a4 = new ContactId("../img/sadface.png", "grisha", "grigorii@U.UA")
+            let arrCont = [a1, a2, a3, a4]
+            let Book = new PhoneBook(arrCont, 'dvi')
+            Book.render('dvi')
+            //Book.ShowAll()
+            Book.render('dvi')
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="dvi"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        class Cows {
+            constructor(numCount = 4) {
+                if (this.numCount < 0)
+                    throw new Error("numCount is <0")
+                Object.defineProperty(this, "numCount", {
+                    value: numCount
+                })
+                this.try = 1
+                this.cowCount = 0
+                this.bullCount = 0
+                if ((this.cowCount + this.bullCount) > 4) throw new Error('to much Animals')
+            }
+            getrandomNum() {
+                let secretArr = []
+                for (let i = 0; i < this.numCount; i++) {
+                    let randNum = Math.floor(Math.random() * 10)
+                    secretArr.push(randNum)
+                }
+                return secretArr
+            }
+            getTryNum() {
+                let tryNum = parseInt(this.inpTry).split('')
+                this.checkBullCount(tryNum)
+                this.checkCowCount(tryNum)
+                this.render()
+
+            }
+
+            checkBullCount(tryNum) {
+                for (let i = 0; i < numCount; i++) {
+                    if (randArr[i] == tryNum[i])
+                        this.bullCount++
+                }
+            }
+
+            checkCowCount(tryNum) {
+                for (let i = 0; i < numCount; i++) {
+                    for (let j = 0; j < numCount; j++) {
+                        if (randArr[i] == tryNum[j])
+                            this.cowCount++
+                    }
+                }
+            }
+            // start(contId) {
+            //     let div = document.getElementById(contId)
+            //     const startBtn = document.createElement('button')
+            //     startBtn.innerText = "start"
+            //     startBtn.onclick = this.render.bind(this)
+            //     div.appendChild(startBtn)
+            //     return div
+            //}
+
+            render(contId) {
+                let div = document.getElementById(contId)
+                let tbl = document.createElement('table')
+                tbl.style.border = "2px"
+                tbl.style.borderColor = "solid black"
+                let tr = document.createElement('tr')
+
+                let tdnum = document.createElement('td')
+                this.span = document.createElement('span')
+                this.span.innerText = this.try
+                tdnum.appendChild(this.span)
+                tr.appendChild(tdnum)
+
+                let tdInp = document.createElement('td')
+                this.inpTry = document.createElement('input')
+                this.inpTry.type = "number"
+                this.inpTry.placeholder = "X-X-X-X"
+                tdInp.appendChild(this.inpTry)
+                tr.appendChild(tdInp)
+
+                let tdCow = document.createElement('td')
+                this.cowCountSpan = document.createElement('span')
+                this.cowCountSpan.innerText = this.cowCount
+                tdCow.appendChild(this.cowCountSpan)
+                tr.appendChild(tdCow)
+
+                let tdBull = document.createElement('td')
+                this.bullCountSpan = document.createElement('span')
+                this.bullCountSpan.innerText = this.bullCount
+                tdBull.appendChild(this.bullCountSpan)
+                tr.appendChild(tdBull)
+
+                const btn = document.createElement('button')
+                btn.innerText = "Try"
+                btn.onclick = this.getTryNum.bind(this)
+
+                tbl.appendChild(tr)
+                div.appendChild(tbl)
+                div.appendChild(btn)
+            }
+
+
+
+
+
+
+
+
+
+        }
+        window.onload = function () {
+            let bc = new Cows()
+            //bc.start('gameField')
+            bc.render('gameField')
+        }
+    </script>
+</head>
+
+<body>
+    <div id="gameField"></div>
+</body>
+
+</html>

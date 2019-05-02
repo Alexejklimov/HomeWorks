@@ -1,0 +1,41 @@
+<!-- Задача. Розробити клас «Список новин» за прикладом рубрики новин на сайті ukr.net
+Поля	•	Заголовок категорії новин
+•	Список новин (час додавання інформації у список новини, текстовий заголовок новин і відповідний URL, джерело інформації) (передається у конструктор при створенні)
+•	Поточний список з 5 поточних новин (новин, які відображаються )
+•	Кількість секунд до автоматичного оновлення списку
+Методи	
+•	Метод генерування випадковим чином 5 поточних новин
+•	Метод генерування розмітки render
+•	Запуск автоматичного оновлення (виклику попереднього методу автоматично з використанням setInterval) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        time {
+            padding: 10px
+        }
+
+        span {
+            padding: 10px;
+            font-size: 12px
+        }
+
+        a {
+            font-size: 20px
+        }
+    </style>
+    <script src="../script/news.js">
+
+    </script>
+</head>
+
+<body>
+    <div id="dvi"></div>
+</body>
+
+</html>
