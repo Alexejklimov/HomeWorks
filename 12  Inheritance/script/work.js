@@ -9,7 +9,7 @@ class TPair {
         this.val2 = val2
     }
     plus(value) {
-        return value += 1
+        return value += 1    Ви не збільшуєте значення полів (а треба би)
     }
     minus(value) {
         return value -= 1
@@ -19,14 +19,14 @@ class TPair {
     }
 }
 class TTime extends TPair {
-    constructor(hour, minute) {
-        super(...arguments)
+    constructor(hour, minute) {  
+        super(...arguments)   Тут треба підкорегувати TPair (перше число це хвилини - від 0 до 59, друге число години -  0-23)
     }
 }
 class TMoney extends TPair {
-    constructor(hrn, kop) {
-        super(...arguments)
-    }
+    constructor(hrn, kop) {   
+        super(...arguments)  Тут треба підкорегувати TPair (перше число це копійки - від 0 до 99)
+    }                       
 }
 window.onload = function () {
     let time1 = new TTime(5, 6)
