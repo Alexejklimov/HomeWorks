@@ -46,7 +46,8 @@ class Bank {
         this.clientArr = clientArr
     }
     plebs() {
-        let plebsArr = this.clientArr.filter((x, i, arr) => arr[i].CreditLimit == undefined)
+        let plebsArr = this.clientArr.filter((x, i, arr) => arr[i].CreditLimit == undefined) Тут треба використати метод instaceOf
+                                          https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/instanceof
         return plebsArr
     }
     goldenPlebs() {
