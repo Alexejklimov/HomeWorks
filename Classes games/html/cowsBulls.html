@@ -46,7 +46,7 @@
             checkCowCount(tryNum) {
                 for (let i = 0; i < numCount; i++) {
                     for (let j = 0; j < numCount; j++) {
-                        if (randArr[i] == tryNum[j])
+                        if (randArr[i] == tryNum[j] && randArr[i] != tryNum[i])
                             this.cowCount++
                     }
                 }
@@ -76,6 +76,7 @@
                 let tdInp = document.createElement('td')
                 this.inpTry = document.createElement('input')
                 this.inpTry.type = "number"
+                this.inpTry.style.width = "70px"
                 this.inpTry.placeholder = "X-X-X-X"
                 tdInp.appendChild(this.inpTry)
                 tr.appendChild(tdInp)

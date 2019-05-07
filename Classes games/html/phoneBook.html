@@ -50,7 +50,7 @@
                 this.countId = countId
             }
             findAcc() { //шото не то
-                let inptText = this.inp.value
+                let inptText = toString(this.inp.value)
                 let inp = inptText.split('')
                 let countId = this.countId
 
@@ -60,21 +60,16 @@
                     for (let i = 0; i < inp.length; i++) {
                         if (inp[i] == accName[i]) counter++
                     }
-                    if (counter == inp.length + 1) return this.accArr[x].toString()
+                    if (counter == inp.length + 1) this.accArr[x].toString()
                 }
             }
             ShowAll() {
-                for (let i = 0; i < this.accArr.length; i++) {
-                    this.accArr[i].toString()
-
-                }
-
+                this.accArr.forEach(this.accArr.toString())
             }
 
             render(contId) {
                 let container = document.getElementById(contId)
                 let label = document.createElement('label')
-                label.innerText = "input"
                 this.inp = document.createElement('input')
                 this.inp.placeholder = "input name"
                 label.appendChild(this.inp)
@@ -99,7 +94,7 @@
             let a4 = new ContactId("../img/sadface.png", "grisha", "grigorii@U.UA")
             let arrCont = [a1, a2, a3, a4]
             let Book = new PhoneBook(arrCont, 'dvi')
-            Book.render('dvi')
+
             //Book.ShowAll()
             Book.render('dvi')
         }
