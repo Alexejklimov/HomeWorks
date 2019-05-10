@@ -1,7 +1,6 @@
 // <!-- Створити клас Client
 // Властивості	---ID, ПІБ,  Кількість грошей на рахунку
 // Методи---	Додавання грошей,  Зняття грошей,  ToString
-
 // На основі цього класу створити клас GoldenClient
 //         Властивості	---ID  ПІБ  Кількість грошей на рахунку,  Ліміт кредитних коштів,  Відсоток за використання кредитних коштів
 //         Методи---	Додавання грошей,  Зняття грошей,  Визначення пені за використання кредитних коштів,  ToString 
@@ -39,19 +38,16 @@ class GoldenClient extends Client {
         return super.toString() + `${this.CreditLimit} - ${this.CreditPercent}<br>`
     }
 }
-
-
 class Bank {
     constructor(clientArr) {
         this.clientArr = clientArr
     }
     plebs() {
-        let plebsArr = this.clientArr.filter((x, i, arr) => arr[i].CreditLimit == undefined) Тут треба використати метод instaceOf
-                                          https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/instanceof
-        return plebsArr
+        let plebsArr = this.clientArr.filter((x, i, arr) => (arr[i] instanceof GoldenClient) == false) //Тут треба використати метод instaceOf
+        return plebsArr                                                                                // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/instanceof
     }
     goldenPlebs() {
-        let goldenArr = this.clientArr.filter((x, i, arr) => arr[i].CreditLimit != undefined)
+        let goldenArr = this.clientArr.filter((x, i, arr) => arr[i] instanceof GoldenClient)
         return goldenArr
     }
     allMoney() {
@@ -71,7 +67,9 @@ window.onload = function () {
     let Gclient3 = new GoldenClient(006, "qerb", 415050, 1000, 27)
     let Arr = [client1, client2, client3, Gclient1, Gclient2, Gclient3]
     let bbank = new Bank(Arr)
-    //document.write(bbank.allMoney())
-    //document.write(bbank.plebs())
-    //document.write(bbank.goldenPlebs())
+    document.write(bbank.allMoney())
+    document.write("<hr>")
+    document.write(bbank.plebs())
+    document.write("<hr>")
+    document.write(bbank.goldenPlebs())
 }
