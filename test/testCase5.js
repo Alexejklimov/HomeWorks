@@ -5,9 +5,8 @@ if (index == -1) alert("There is no el = 78")
 else {
     var newArr =
         arrNumber.slice(index)
-    newArr.reduce((acc, x) => {
-        acc += x
-        return acc
+    newArr.reduce((acc, x) => {        
+        return acc += x
     }, 0)
 }
 document.write(newArr)
