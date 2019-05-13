@@ -1,0 +1,43 @@
+<!-- /Задача 2. Користувач вводить 10 слів. Підрахувати кількість слів, у яких перша літера і остання літера однакові. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        const findSameLetters = () => {
+            let words = document.querySelectorAll("input")
+            let ArrW = Array.from(words)
+            let acc = 0
+            for (let i = 0; i < ArrW.length; i++) {
+                if (ArrW[i].value[0] == ArrW[i].value[ArrW[i].value.length - 1]) acc += 1
+            }
+            alert(acc)
+        }
+        window.onload = function () {
+            let div = document.getElementById("dvi")
+            let tbl = document.createElement("table")
+            for (let i = 0; i < 10; i++) {
+                let tr = document.createElement("tr")
+                let inp = document.createElement("input")
+                tr.appendChild(inp)
+                tbl.appendChild(tr)
+            }
+            div.appendChild(tbl)
+            let btn = document.createElement("button")
+            btn.innerText = "find"
+            div.appendChild(btn)
+            btn.onclick = findSameLetters
+        }
+    </script>
+</head>
+
+<body>
+    <div id="dvi"></div>
+</body>
+
+</html>
