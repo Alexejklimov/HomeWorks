@@ -17,7 +17,7 @@ class SameLetters {
         let div = document.getElementById(contId)
         for (let i = 0; i < this.rowCount; i++) {
             let tbl = document.createElement("table")
-            let tr = document.createElement("tr")
+            let tr = document.createElement("tr")   А де td?
             let inp = document.createElement("input")
             tr.appendChild(inp)
             tbl.appendChild(tr)
