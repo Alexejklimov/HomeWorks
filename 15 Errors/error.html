@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        class IsNumberError extends Error {
+            constructor() {
+                super()
+                this.message = "Має бути число"
+                this.name = "IsNumberError"
+                this.stack = (new Error()).stack
+            }
+        }
+        class IsInRangeError extends Error {
+            constructor() {
+                super()
+                this.message = "недопустиме значення"
+                this.name = "IsInRangeError"
+                this.stack = (new Error()).stack
+            }
+        }
+        class IsVacationError extends Error {
+            constructor() {
+                super()
+                this.message = "в цей період канікули"
+                this.name = "IsVacationError"
+                this.stack = (new Error()).stack
+            }
+        }
+        class ItsTooLateError extends Error {
+            constructor() {
+                super()
+                this.message = "раніше треба було думати"
+                this.name = "ItsTooLateError"
+                this.stack = (new Error()).stack
+            }
+        }
+
+
+        const CheckChanceToFixRate = () => {
+            let month = prompt("insert Month", "")
+            let rate = prompt("insert Rate", "")
+            try {
+                if (isNaN(month)) { throw new IsNumberError }
+                else if (month < 0 || month > 12) { throw new IsInRangeError }
+                else if (month >= 6 && month <= 8) { throw new IsVacationError }
+                else if (isNaN(rate)) { throw new IsNumberError }
+                else if (rate < 0 || rate > 100) { throw new IsInRangeError }
+                else if (rate < 50 && month == 12) throw new ItsTooLateError
+            } catch (err) {
+                if (err instanceof IsNumberError) {
+                    console.log(err.message)
+                    alert(err.message)
+                }
+                else if (err instanceof IsInRangeError) {
+                    console.log(err.message)
+                    alert(err.message)
+                }
+                else if (err instanceof IsVacationError) {
+                    console.log(err.message)
+                    alert(err.message)
+                }
+                else if (err instanceof ItsTooLateError) {
+                    console.log(err.message)
+                    alert(err.message)
+                }
+                return false
+            }
+            rate < 50 ? alert("its OK. You can Fix the Rate") : alert("Good Job")
+            return true
+        }
+        window.onload = function () {
+            document.getElementById("btn").onclick = CheckChanceToFixRate
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <button id="btn">Check</button>
+</body>
+
+</html>
