@@ -42,10 +42,10 @@
 
 
         const CheckChanceToFixRate = () => {
-            let month = prompt("insert Month", "")
+            let month = prompt("insert Month", "")           Ви пам"ятаєте, що результатом prompt є String?
             let rate = prompt("insert Rate", "")
             try {
-                if (isNaN(month)) { throw new IsNumberError }
+                if (isNaN(month)) { throw new IsNumberError }          Тут Ви працюєте з рядком month (а треба число)
                 else if (month < 0 || month > 12) { throw new IsInRangeError }
                 else if (month >= 6 && month <= 8) { throw new IsVacationError }
                 else if (isNaN(rate)) { throw new IsNumberError }
