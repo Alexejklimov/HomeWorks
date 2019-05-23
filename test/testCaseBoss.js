@@ -99,7 +99,14 @@ class Tester {
         }
 
         if (this.counter > this.testCount) alert(`its all. Your score is ${this.score}`)
+    
+    
+    
+    
     }
+
+
+
     // getWrongAnswers() {
 
     //     let tr = document.createElement("tr")
@@ -172,10 +179,10 @@ class Tester {
         p3.appendChild(this.spScore)
         container.appendChild(p3)
 
-        //======= таблица ответов 
-        // this.table = document.createElement("table")
-        // let trr = this.getWrongAnswers()
-        // container.appendChild(trr)
+        ======= таблица ответов 
+        this.table = document.createElement("table")
+        let trr = this.getWrongAnswers()
+        container.appendChild(trr)
 
     }
 }

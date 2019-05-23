@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        class Game15 {
+            constructor() {
+                this.gameTable = this.createGameTable()
+            }
+            createGameTable() {
+                let numbers = []
+                for (let i = 0; i < 16; i++) {
+                    numbers[i] = i
+
+                }
+                let gameTable = []
+                for (let i = 0; i < 4; i++) {
+                    let row = []
+                    for (let j = 0; j < 4; j++) {
+                        let random = gameTable.splice(Math.floor(Math.random() * gameTable.length + 1), 1);
+                        row.push(random)
+                    }
+                    gameTable.push(row)
+                }
+                return gameTable
+            }
+            getZeroButtons(i, j) {
+                if (i > 0 && this.this.gameTable[i - 1][j] == 0)
+                    return this.buttons[i - 1][j]
+                if (j < 3 && this.this.gameTable[i][j + 1] == 0)
+                    return this.buttons[i][j + 1]
+                if (i < 3 && this.this.gameTable[i + 1][j] == 0)
+                    return this.buttons[i + 1][j]
+                if (j > 0 && this.this.gameTable[i][j - 1] == 0)
+                    return this.buttons[i][j - 1]
+            }
+
+
+            onClick = (e) => {
+                let btn = e.target
+                let row = parseint(btn.getAttribute('row'))
+                let col = parseint(btn.getAttribute('col'))
+                let zeroBtn = this.getZeroButtons(row, col)
+                if (zeroBtn) {
+                    let temp = this.buttons[row][col]
+                    this.buttons[row][col].innerText = zeroBtn.innerText
+                    zeroBtn.innerText = temp
+                }
+
+
+            }
+
+            render(containerId) {
+                let container = document.getElementById(containerId)
+                let table = document.createElement("table")
+                this.buttons = []
+                for (let i = 0; i < 4; i++) {
+                    let buttonRow = []
+                    let tr = document.createElement("tr")
+                    for (let j = 0; j < 4; j++) {
+                        let td = document.createElement("td")
+                        let btn = document.createElement("button")
+                        btn.innerText = this.gameTable[i][j] || "--"
+                        btn.setAttribute('row', i)
+                        btn.setAttribute("col", j)
+                        td.appendChild(btn)
+                        tr.appendChild(td)
+                        buttonRow.push(btn)
+                    }
+                    this.buttons.push(buttonRow)
+                    table.appendChild(tr)
+                }
+                table.onclick = this.onclick
+                container.appendChild(table)
+            }
+
+        }
+        window.onload = function () {
+            let game = new Game15()
+            game.render("dvi")
+        }
+    </script>
+</head>
+
+<body>
+    <div id="dvi"></div>
+</body>
+
+</html>

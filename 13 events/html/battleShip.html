@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>battleShip</title>
+    <script>
+        class Battle {
+            constructor(fieldSide, shipCount) {
+                this.fieldSide = fieldSide
+                this.shipCount = shipCount
+                this.battleField = this.makeField()
+            }
+            makeField() {
+                let field = []
+                let shipChecker = 0
+                for (let j = 0; j < this.fieldSide; j++) {
+                    let tr = []
+                    for (let x = 0; x < this.fieldSide; x++) {
+                        let td = Math.floor(Math.random() * 1.65)
+                        if (shipChecker < this.shipCount) {
+                            if (td > 0) {
+                                tr.push(td)
+                                shipChecker += 1
+                            }
+                            else tr.push(td)
+                        }
+                        else tr.push(0)
+                    }
+                    field.push(tr)
+                }
+                return field
+            }
+
+            render(contId) {
+                let container = document.getElementById(contId)
+                document.write(this.battleField)
+
+            }
+        }
+        window.onload = function () {
+            let game = new Battle(4, 3)
+            game.render("GameField")
+        }
+    </script>
+</head>
+
+<body>
+    <div id="GameField">
+
+    </div>
+</body>
+
+</html>
