@@ -51,6 +51,7 @@
                 else if (isNaN(rate)) { throw new IsNumberError }
                 else if (rate < 0 || rate > 100) { throw new IsInRangeError }
                 else if (rate < 50 && month == 12) throw new ItsTooLateError
+                rate < 50 ? alert("its OK. You can Fix the Rate") : alert("Good Job")
             } catch (err) {
                 if (err instanceof IsNumberError) {
                     console.log(err.message)
@@ -70,7 +71,7 @@
                 }
                 return false
             }
-            rate < 50 ? alert("its OK. You can Fix the Rate") : alert("Good Job")
+
             return true
         }
         window.onload = function () {
