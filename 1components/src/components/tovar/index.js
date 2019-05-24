@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 class Tovar extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {}   Якщо не використовуєте state, то видаляйте
     }
     render() {
         const { title, tovarProp } = this.props
